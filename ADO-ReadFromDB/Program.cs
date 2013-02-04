@@ -32,6 +32,15 @@ namespace ADO_ReadFromDB
 
                 reader.Close();
                 db.Close();
+
+                string scalarQuery = "SELECT COUNT(*) FROM student";
+
+                cmd.CommandText = scalarQuery;
+
+                db.Open();
+                object o = cmd.ExecuteScalar();
+                Console.WriteLine("Il y a " + o + " élèves dans la classe");
+                db.Close();
             }
             catch (Exception ex)
             {
